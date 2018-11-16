@@ -1,2 +1,1 @@
-# expensify-app
 # expensify
