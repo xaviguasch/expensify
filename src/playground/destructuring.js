@@ -1,3 +1,11 @@
+//
+// Object destructuring
+//
+
+
+
+
+
 // const person = {
 //     name: 'Andrew',
 //     age: 27,
@@ -28,16 +36,48 @@
 // }
 
 
-const book = {
-    title: 'Ego Is The Enemy',
-    author: 'Ryan Holiday',
-    publisher: {
-        name: 'Penguin'
-    }
-}
+// const book = {
+//     title: 'Ego Is The Enemy',
+//     author: 'Ryan Holiday',
+//     publisher: {
+//         name: 'Penguin'
+//     }
+// }
 
-const { name: publisherName = 'Self-Published' } = book.publisher
+// const { name: publisherName = 'Self-Published' } = book.publisher
 
 
 
-console.log(publisherName); // Penguin, Self-Published as default
+// console.log(publisherName); // Penguin, Self-Published as default
+
+
+
+
+
+
+
+
+
+
+//
+// Array destructuring
+//
+
+// const address = ['1299 S Juniper Street', 'Philadelphia', 'Pennsylvania', '19147']
+
+// const [ , city, state, zip ] = address
+
+// console.log(`You're ${city} ${state}.`);
+
+
+
+
+const item = ['Coffe (hot)', '$2.00', '$2.50', '$2.75']
+
+
+// We want to print "A medium Coffe (hot) costs $2.50."
+
+const [ itemName, , mediumPrice, largePrice ] = item
+
+console.log(`A large ${itemName} costs ${largePrice}. `);
+
