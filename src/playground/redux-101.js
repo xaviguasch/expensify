@@ -3,47 +3,58 @@ import { createStore } from 'redux'
 const store = createStore((state = { count: 0 }, action) => {
     switch (action.type) {
         case 'INCREMENT':
+            const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy : 1; 
             return {
-                count: state.count + 1
+                count: state.count + incrementBy
             }
         case 'DECREMENT':
+            const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy : 1;
             return {
-                count: state.count - 1
+                count: state.count - decrementBy
             }
         case 'RESET':
             return {
                 count: 0
+            }
+        case 'SET':
+            return {
+                count: action.count
             }
         default:
             return state
     }    
 })
 
-console.log(store.getState())
+// This function gets called every single time the store changes
+store.subscribe(() => {
+    console.log(store.getState())
+
+})
 
 
 
 
-
-// Actions - it's an object that gets send to the store
-
-// Increment the count 
 store.dispatch({
-    type: 'INCREMENT'
+    type: 'INCREMENT',
+    incrementBy: 5
 })
 store.dispatch({
     type: 'INCREMENT'
 })
-
-
-// Reset the count to zero
 store.dispatch({
     type: 'RESET'
 })
-
-// Decrement the count
 store.dispatch({
     type: 'DECREMENT'
+})
+store.dispatch({
+    type: 'DECREMENT',
+    decrementBy: 10
+})
+
+store.dispatch({
+    type: 'SET',
+    count: 101
 })
 
 
@@ -51,5 +62,4 @@ store.dispatch({
 // the count changes.
 
 
-console.log(store.getState()) // It gets {count: -1}    We incremented twice (+2), reseted (0) and decremented
-// (-1).
+
